@@ -34,8 +34,8 @@ module.exports = defineConfig({
     // Screenshot on failure
     screenshot: 'only-on-failure',
     
-    // Video on failure
-    video: 'retain-on-failure',
+    // Video - record for all tests to show browser window
+    video: 'on',
     
     // Default timeout for actions
     actionTimeout: testConfig.timeouts.action,
