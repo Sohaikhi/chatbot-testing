@@ -2,6 +2,8 @@
 
 Automated testing framework for the chatbot portal using Playwright.
 
+> **🚀 New to this project? Start here:** **[HOW_TO_SETUP.md](HOW_TO_SETUP.md)** - Simple guide to get running on your local machine in 15 minutes!
+
 ## 🎯 Overview
 
 This repository contains end-to-end tests for the chatbot portal at:
@@ -124,11 +126,18 @@ chatbot-testing/
 
 ## 📚 Documentation
 
-### Getting Started
-- 📘 **[C# Version Guide](README-CSHARP.md)** - Complete C# .NET documentation
-- 📘 **[JavaScript to C# Conversion](JAVASCRIPT_TO_CSHARP.md)** - Side-by-side comparison
-- 📘 **[Local Setup Guide](LOCAL_SETUP_GUIDE.md)** - JavaScript version setup
+### 🚀 Setup & Getting Started
+- 🌟 **[HOW_TO_SETUP.md](HOW_TO_SETUP.md)** - **START HERE!** Simple 15-minute setup guide
+- 📘 **[GETTING_STARTED.md](GETTING_STARTED.md)** - Learning roadmap and next steps
+- 📘 **[LOCAL_SETUP_GUIDE.md](LOCAL_SETUP_GUIDE.md)** - Comprehensive JavaScript setup (detailed)
+- 📘 **[README-CSHARP.md](README-CSHARP.md)** - Complete C# .NET documentation
 - 🔄 **[Git Sync Workflow](GIT_SYNC_WORKFLOW.md)** - Syncing agent changes
+- ⚡ **[QUICK_REFERENCE.md](QUICK_REFERENCE.md)** - Command cheat sheet
+
+### 📖 Advanced Guides
+- 📘 **[JavaScript to C# Conversion](JAVASCRIPT_TO_CSHARP.md)** - Side-by-side comparison
+- 🌐 **[Chrome Browser Info](CHROME_BROWSER_INFO.md)** - Chrome vs Chromium details
+- 🎭 **[Headed Mode Guide](HEADED_MODE_GUIDE.md)** - Advanced testing modes
 
 ### Execution Results
 - 📸 **[Complete Screenshot Gallery](COMPLETE_SCREENSHOT_GALLERY.md)** - 26 screenshots
