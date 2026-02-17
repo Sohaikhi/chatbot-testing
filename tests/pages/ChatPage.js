@@ -1,4 +1,5 @@
 const { expect } = require('@playwright/test');
+const testConfig = require('../../test.config');
 
 /**
  * Page Object for the Chat page
@@ -9,7 +10,7 @@ class ChatPage {
     this.page = page;
     
     // URL pattern
-    this.chatUrlPattern = /\/portal\/chat\//;
+    this.chatUrlPattern = testConfig.patterns.chatUrl;
     
     // TODO: Update these selectors based on actual page structure
     // Use Playwright Inspector (npx playwright codegen) to discover stable selectors
@@ -42,9 +43,9 @@ class ChatPage {
 
   /**
    * Navigate to the chat page
-   * @param {string} conversationId - Optional conversation ID
+   * @param {string} conversationId - Optional conversation ID (defaults to value from config)
    */
-  async goto(conversationId = 'conv_66aca917e2a344fb') {
+  async goto(conversationId = testConfig.conversationId) {
     const url = `/portal/chat/${conversationId}`;
     await this.page.goto(url);
   }

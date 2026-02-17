@@ -1,4 +1,5 @@
 const { expect } = require('@playwright/test');
+const testConfig = require('../../test.config');
 
 /**
  * Helper for manual login flow
@@ -14,12 +15,12 @@ class ManualLoginHelper {
    * @param {string} targetUrl - The URL to navigate to
    * @param {object} options - Configuration options
    * @param {string} options.loginUrlPattern - Pattern to detect login page (optional)
-   * @param {number} options.timeout - Max time to wait for login (default: 5 minutes)
+   * @param {number} options.timeout - Max time to wait for login (from config by default)
    */
   async waitForManualLogin(targetUrl, options = {}) {
     const {
-      loginUrlPattern = /login|auth|signin/i,
-      timeout = 5 * 60 * 1000, // 5 minutes
+      loginUrlPattern = testConfig.patterns.loginUrl,
+      timeout = testConfig.timeouts.login,
     } = options;
 
     // Navigate to target URL
@@ -97,7 +98,10 @@ class ManualLoginHelper {
    * @param {string} name - Name for the screenshot
    */
   async takeDebugScreenshot(name = 'debug') {
-    const timestamp = new Date().toISOString().replace(/[^0-9]/g, '-');
+    const timestamp = new Date().toISOString()
+      .replace(/[^0-9]/g, '-')
+      .replace(/-+/g, '-')  // Replace multiple hyphens with single hyphen
+      .replace(/-$/, '');    // Remove trailing hyphen
     const filename = `screenshot-${name}-${timestamp}.png`;
     await this.page.screenshot({ path: filename, fullPage: true });
     console.log(`📸 Screenshot saved: ${filename}`);
