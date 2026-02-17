@@ -11,6 +11,18 @@ https://gsassistant-hec2cvcsbnf6a2bx.eastus-01.azurewebsites.net/portal/chat/con
 
 The test framework is designed to handle authentication-gated applications by pausing test execution to allow manual login, then continuing with automated validation.
 
+## 📖 Documentation
+
+### Getting Started
+- 📘 **[Local Setup Guide](LOCAL_SETUP_GUIDE.md)** - Complete guide for setting up on your local machine
+- 🔄 **[Git Sync Workflow](GIT_SYNC_WORKFLOW.md)** - How to sync agent changes to your local machine
+- 🎭 **[Headed Mode Guide](HEADED_MODE_GUIDE.md)** - Running tests with visible browser window
+
+### Execution Results
+- 📸 **[Complete Screenshot Gallery](COMPLETE_SCREENSHOT_GALLERY.md)** - 26 screenshots documenting every test step
+- 🎬 **[Browser Window Open](BROWSER_WINDOW_OPEN.md)** - Browser window demonstration with video
+- 📊 **[Execution Index](EXECUTION_INDEX.md)** - Index of all test executions
+
 ## 📋 Features
 
 - ✅ **Manual Login Support**: Tests pause for user authentication
@@ -19,15 +31,23 @@ The test framework is designed to handle authentication-gated applications by pa
 - ✅ **Multiple Run Modes**: Headed, headless, debug, and UI modes
 - ✅ **CI/CD Integration**: GitHub Actions workflow included
 - ✅ **Detailed Reporting**: HTML reports with screenshots and videos
+- ✅ **Local Development**: Complete setup guide for running locally
+- ✅ **Git Sync Workflow**: Easy synchronization with agent changes
 
 ## 🚀 Quick Start
 
-### Prerequisites
+### For Local Machine Setup
 
-- Node.js 18 or higher
-- npm or yarn package manager
+**👉 New to this project? Start here:** [Local Setup Guide](LOCAL_SETUP_GUIDE.md)
 
-### Installation
+This comprehensive guide covers:
+- Prerequisites and system requirements
+- Step-by-step installation
+- Running tests on your machine
+- Syncing changes from GitHub agent
+- Troubleshooting common issues
+
+### Quick Install (Experienced Users)
 
 1. Clone the repository:
 ```bash
@@ -45,7 +65,7 @@ npm install
 npm run install-browsers
 ```
 
-4. Validate setup (optional):
+4. Validate setup:
 ```bash
 npm run validate
 ```
@@ -324,12 +344,106 @@ The `ChatPage` class uses multiple fallback selectors. Update them based on your
   timeout: 180 * 1000, // 3 minutes
   ```
 
+## 🔄 Keeping Your Local Copy in Sync
+
+When the GitHub agent makes changes to this repository, you can easily sync them to your local machine.
+
+### Quick Sync
+
+```bash
+# Pull latest changes
+git pull origin main
+
+# Update dependencies (if package.json changed)
+npm install
+
+# Verify everything works
+npm test
+```
+
+### Detailed Sync Guide
+
+📘 **[Git Sync Workflow](GIT_SYNC_WORKFLOW.md)** - Complete guide covering:
+- Syncing agent changes to local machine
+- Handling merge conflicts
+- Working with feature branches
+- Emergency recovery procedures
+- Git command reference
+
+### Common Sync Scenarios
+
+**Agent made changes, you want them:**
+```bash
+git pull origin main
+npm install
+```
+
+**You have local changes, need agent's changes too:**
+```bash
+git add .
+git commit -m "My changes"
+git pull origin main
+```
+
+**Agent worked on a feature branch:**
+```bash
+git pull origin copilot/run-playwright-framework
+npm install
+```
+
 ## 📚 Resources
 
 - [Playwright Documentation](https://playwright.dev)
 - [Playwright Test API](https://playwright.dev/docs/api/class-test)
 - [Playwright Selectors](https://playwright.dev/docs/selectors)
 - [Best Practices](https://playwright.dev/docs/best-practices)
+
+## 🔄 Keeping Your Local Copy in Sync
+
+When the GitHub agent makes changes to this repository, you can easily sync them to your local machine.
+
+### Quick Sync
+
+```bash
+# Pull latest changes
+git pull origin main
+
+# Update dependencies (if package.json changed)
+npm install
+
+# Verify everything works
+npm test
+```
+
+### Detailed Sync Guide
+
+📘 **[Git Sync Workflow](GIT_SYNC_WORKFLOW.md)** - Complete guide covering:
+- Syncing agent changes to local machine
+- Handling merge conflicts
+- Working with feature branches
+- Emergency recovery procedures
+- Git command reference
+
+### Common Sync Scenarios
+
+**Agent made changes, you want them:**
+```bash
+git pull origin main
+npm install
+```
+
+**You have local changes, need agent's changes too:**
+```bash
+git add .
+git commit -m "My changes"
+git pull origin main
+```
+
+**Agent worked on a feature branch:**
+```bash
+git pull origin copilot/run-playwright-framework
+npm install
+```
 
 ## 🤝 Contributing
 
