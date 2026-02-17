@@ -16,7 +16,7 @@ test.describe('Chatbot Portal - Manual Login Flow', () => {
     const chatPage = new ChatPage(page);
 
     // Step 1: Navigate and pause for manual login
-    test.step('Navigate to chat URL and pause for manual login', async () => {
+    await test.step('Navigate to chat URL and pause for manual login', async () => {
       console.log('\n=== STEP 1: Manual Login ===');
       await loginHelper.waitForManualLoginWithValidation(
         CHAT_URL,
