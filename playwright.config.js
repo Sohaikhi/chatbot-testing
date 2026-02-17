@@ -34,8 +34,8 @@ module.exports = defineConfig({
     // Screenshot on failure
     screenshot: 'only-on-failure',
     
-    // Video on failure
-    video: 'retain-on-failure',
+    // Video - record for all tests to show browser window
+    video: 'on',
     
     // Default timeout for actions
     actionTimeout: testConfig.timeouts.action,
@@ -47,9 +47,11 @@ module.exports = defineConfig({
   // Configure projects for major browsers
   projects: [
     {
-      name: 'chromium',
+      name: 'chrome',
       use: { 
         ...devices['Desktop Chrome'],
+        // Use Google Chrome instead of Chromium
+        channel: 'chrome',
         // Slow down by 100ms for better visibility in headed mode
         launchOptions: {
           slowMo: process.env.CI ? 0 : 100,

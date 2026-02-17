@@ -10,7 +10,7 @@
     "test:ui": "playwright test --ui",
     "codegen": "playwright codegen $(node scripts/get-chat-url.js)",
     "show-report": "playwright show-report",
-    "install-browsers": "playwright install --with-deps chromium",
+    "install-browsers": "playwright install --with-deps chrome",
     "validate": "node validate-setup.js"
   },
   "repository": {
