@@ -1,0 +1,79 @@
+name: Playwright Tests
+
+on:
+  # Trigger on push to main branch
+  push:
+    branches: [ main, master ]
+  
+  # Trigger on pull requests
+  pull_request:
+    branches: [ main, master ]
+  
+  # Allow manual trigger
+  workflow_dispatch:
+    inputs:
+      headed:
+        description: 'Run tests in headed mode (not recommended for CI)'
+        required: false
+        default: 'false'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
+
+jobs:
+  test:
+    name: Run Playwright Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Run Playwright tests (headless)
+        if: ${{ github.event.inputs.headed != 'true' }}
+        run: npm run test:ci
+        continue-on-error: true
+        # Note: Tests require manual login, so they will fail in CI
+        # This workflow is primarily for validation and artifact collection
+
+      - name: Run Playwright tests (headed)
+        if: ${{ github.event.inputs.headed == 'true' }}
+        run: npm test
+        continue-on-error: true
+
+      - name: Upload Playwright report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-results
+          path: test-results/
+          retention-days: 30
+
+      - name: Comment on failure
+        if: failure()
+        run: |
+          echo "⚠️ Tests require manual login interaction"
+          echo "These tests are designed to run locally with user interaction"
+          echo "Download the artifacts to review the test execution details"
