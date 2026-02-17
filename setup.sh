@@ -29,8 +29,8 @@ dotnet build
 echo ""
 
 # Install Playwright browsers
-echo "🌐 Installing Playwright browsers..."
-pwsh bin/Debug/net8.0/playwright.ps1 install chromium --with-deps
+echo "🌐 Installing Playwright browsers (Chrome)..."
+pwsh bin/Debug/net8.0/playwright.ps1 install chrome --with-deps
 echo ""
 
 echo "=========================================="

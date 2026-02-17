@@ -2,6 +2,7 @@
 <RunSettings>
   <Playwright>
     <BrowserName>chromium</BrowserName>
+    <Channel>chrome</Channel>
     <LaunchOptions>
       <Headless>false</Headless>
       <SlowMo>100</SlowMo>

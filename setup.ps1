@@ -29,8 +29,8 @@ dotnet build
 Write-Host ""
 
 # Install Playwright browsers
-Write-Host "🌐 Installing Playwright browsers..." -ForegroundColor Yellow
-& "$PWD\bin\Debug\net8.0\playwright.ps1" install chromium --with-deps
+Write-Host "🌐 Installing Playwright browsers (Chrome)..." -ForegroundColor Yellow
+& "$PWD\bin\Debug\net8.0\playwright.ps1" install chrome --with-deps
 Write-Host ""
 
 Write-Host "==========================================" -ForegroundColor Cyan
