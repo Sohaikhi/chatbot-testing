@@ -174,6 +174,8 @@ chatbot-testing/
 ├── .github/
 │   └── workflows/
 │       └── playwright.yml          # GitHub Actions workflow
+├── scripts/
+│   └── get-chat-url.js             # Helper to get chat URL from config
 ├── tests/
 │   ├── pages/
 │   │   └── ChatPage.js             # Page object for chat page
@@ -181,13 +183,28 @@ chatbot-testing/
 │   │   └── ManualLoginHelper.js    # Manual login utilities
 │   ├── chatbot.spec.js             # Main test suite
 │   └── selector-discovery.spec.js  # Selector discovery test
+├── test.config.js                  # Centralized test configuration
 ├── playwright.config.js            # Playwright configuration
 ├── package.json                    # Dependencies and scripts
 ├── .gitignore                      # Git ignore rules
+├── validate-setup.js               # Setup validation script
 └── README.md                       # This file
 ```
 
 ## 🛠️ Configuration
+
+### Test Configuration
+
+**test.config.js** centralizes all test URLs and settings:
+- Base URL for the chatbot portal
+- Conversation ID (easy to update for different conversations)
+- Timeout values
+- URL patterns for validation
+
+To change the target conversation, edit `test.config.js`:
+```javascript
+conversationId: 'conv_YOUR_CONVERSATION_ID',
+```
 
 ### Playwright Config
 

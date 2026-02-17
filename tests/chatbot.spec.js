@@ -1,6 +1,7 @@
 const { test, expect } = require('@playwright/test');
 const { ChatPage } = require('./pages/ChatPage');
 const { ManualLoginHelper } = require('./helpers/ManualLoginHelper');
+const testConfig = require('../test.config');
 
 /**
  * Main test suite for chatbot portal
@@ -8,7 +9,7 @@ const { ManualLoginHelper } = require('./helpers/ManualLoginHelper');
  */
 
 test.describe('Chatbot Portal - Manual Login Flow', () => {
-  const CHAT_URL = 'https://gsassistant-hec2cvcsbnf6a2bx.eastus-01.azurewebsites.net/portal/chat/conv_66aca917e2a344fb';
+  const CHAT_URL = testConfig.chatURL;
   
   test('should allow manual login and verify chat page loads', async ({ page }) => {
     // Initialize helpers
@@ -20,7 +21,7 @@ test.describe('Chatbot Portal - Manual Login Flow', () => {
       console.log('\n=== STEP 1: Manual Login ===');
       await loginHelper.waitForManualLoginWithValidation(
         CHAT_URL,
-        /\/portal\/chat\// // Expected URL pattern after login
+        testConfig.patterns.chatUrl
       );
     });
 

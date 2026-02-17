@@ -8,7 +8,7 @@
     "test:ci": "playwright test",
     "test:debug": "playwright test --debug",
     "test:ui": "playwright test --ui",
-    "codegen": "playwright codegen https://gsassistant-hec2cvcsbnf6a2bx.eastus-01.azurewebsites.net/portal/chat/conv_66aca917e2a344fb",
+    "codegen": "playwright codegen $(node scripts/get-chat-url.js)",
     "show-report": "playwright show-report",
     "install-browsers": "playwright install --with-deps chromium",
     "validate": "node validate-setup.js"

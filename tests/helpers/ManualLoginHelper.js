@@ -97,7 +97,7 @@ class ManualLoginHelper {
    * @param {string} name - Name for the screenshot
    */
   async takeDebugScreenshot(name = 'debug') {
-    const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+    const timestamp = new Date().toISOString().replace(/[^0-9]/g, '-');
     const filename = `screenshot-${name}-${timestamp}.png`;
     await this.page.screenshot({ path: filename, fullPage: true });
     console.log(`📸 Screenshot saved: ${filename}`);

@@ -1,4 +1,5 @@
 const { defineConfig, devices } = require('@playwright/test');
+const testConfig = require('./test.config');
 
 /**
  * Playwright configuration for chatbot testing
@@ -8,7 +9,7 @@ module.exports = defineConfig({
   testDir: './tests',
   
   // Maximum time one test can run for
-  timeout: 120 * 1000,
+  timeout: testConfig.timeouts.test,
   
   // Test execution configuration
   fullyParallel: false, // Run tests sequentially for manual login
@@ -25,7 +26,7 @@ module.exports = defineConfig({
   // Shared settings for all projects
   use: {
     // Base URL to use in actions like `await page.goto('/')`
-    baseURL: 'https://gsassistant-hec2cvcsbnf6a2bx.eastus-01.azurewebsites.net',
+    baseURL: testConfig.baseURL,
     
     // Collect trace when retrying the failed test
     trace: 'on-first-retry',
@@ -37,10 +38,10 @@ module.exports = defineConfig({
     video: 'retain-on-failure',
     
     // Default timeout for actions
-    actionTimeout: 30 * 1000,
+    actionTimeout: testConfig.timeouts.action,
     
     // Default timeout for navigation
-    navigationTimeout: 60 * 1000,
+    navigationTimeout: testConfig.timeouts.navigation,
   },
 
   // Configure projects for major browsers

@@ -1,6 +1,7 @@
 const { test, expect } = require('@playwright/test');
 const { ChatPage } = require('./pages/ChatPage');
 const { ManualLoginHelper } = require('./helpers/ManualLoginHelper');
+const testConfig = require('../test.config');
 
 /**
  * Selector discovery test
@@ -9,7 +10,7 @@ const { ManualLoginHelper } = require('./helpers/ManualLoginHelper');
  */
 
 test.describe('Selector Discovery', () => {
-  const CHAT_URL = 'https://gsassistant-hec2cvcsbnf6a2bx.eastus-01.azurewebsites.net/portal/chat/conv_66aca917e2a344fb';
+  const CHAT_URL = testConfig.chatURL;
 
   test('discover and validate selectors on chat page', async ({ page }) => {
     const loginHelper = new ManualLoginHelper(page);
