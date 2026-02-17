@@ -71,7 +71,7 @@ class ChatPage {
     for (const selector of this.chatInputSelectors) {
       try {
         const element = this.page.locator(selector).first();
-        if (await element.isVisible({ timeout: 5000 })) {
+        if (await element.isVisible({ timeout: testConfig.timeouts.elementVisibility })) {
           return element;
         }
       } catch (e) {
@@ -110,7 +110,7 @@ class ChatPage {
     for (const selector of this.sendButtonSelectors) {
       try {
         const button = this.page.locator(selector).first();
-        if (await button.isVisible({ timeout: 2000 })) {
+        if (await button.isVisible({ timeout: testConfig.timeouts.quickCheck })) {
           await button.click();
           return;
         }

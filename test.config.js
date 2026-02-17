@@ -21,6 +21,8 @@ module.exports = {
     action: 30 * 1000,       // 30 seconds per action
     navigation: 60 * 1000,   // 60 seconds for page navigation
     login: 5 * 60 * 1000,    // 5 minutes for manual login
+    elementVisibility: 5000, // 5 seconds for element to become visible
+    quickCheck: 2000,        // 2 seconds for quick element checks
   },
   
   // URL patterns for validation

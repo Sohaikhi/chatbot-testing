@@ -52,8 +52,11 @@ class ManualLoginHelper {
 
     console.log('▶️  Resumed! Verifying login success...');
     
-    // Wait a bit for post-login redirects
-    await this.page.waitForTimeout(2000);
+    // Wait for network to settle after login
+    await this.page.waitForLoadState('networkidle').catch(() => {
+      // Fallback if networkidle doesn't work - wait for URL to stabilize
+      console.log('Network idle timeout, continuing...');
+    });
 
     const finalUrl = this.page.url();
     console.log(`✓ Current URL after login: ${finalUrl}`);
@@ -98,10 +101,7 @@ class ManualLoginHelper {
    * @param {string} name - Name for the screenshot
    */
   async takeDebugScreenshot(name = 'debug') {
-    const timestamp = new Date().toISOString()
-      .replace(/[^0-9]/g, '-')
-      .replace(/-+/g, '-')  // Replace multiple hyphens with single hyphen
-      .replace(/-$/, '');    // Remove trailing hyphen
+    const timestamp = new Date().toISOString().replace(/\D/g, '');
     const filename = `screenshot-${name}-${timestamp}.png`;
     await this.page.screenshot({ path: filename, fullPage: true });
     console.log(`📸 Screenshot saved: ${filename}`);
