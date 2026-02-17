@@ -68,6 +68,13 @@ This will:
 4. Wait for you to manually complete login
 5. Continue testing after you click "Resume"
 
+**For servers/CI without GUI**, use virtual display:
+```bash
+xvfb-run --auto-servernum --server-args="-screen 0 1920x1080x24" npx playwright test --headed
+```
+
+📖 **See [HEADED_MODE_GUIDE.md](HEADED_MODE_GUIDE.md) for detailed headed mode instructions and examples.**
+
 ### Headless Mode (CI/Automated)
 
 Run tests in headless mode (no browser window):
@@ -118,6 +125,28 @@ Run it separately:
 ```bash
 npx playwright test selector-discovery.spec.js --headed
 ```
+
+### Headed Mode Demo Test
+
+**File**: `tests/demo-headed.spec.js`
+
+This demo test showcases the framework running in headed mode:
+- Demonstrates visible browser window execution
+- Interactive UI with clickable buttons
+- Full CSS rendering with gradients and styles
+- JavaScript execution and DOM updates
+- Screenshot capture of browser output
+
+Run it to see headed mode in action:
+```bash
+# Local (with GUI)
+npx playwright test demo-headed.spec.js --headed
+
+# Server/CI (with virtual display)
+xvfb-run npx playwright test demo-headed.spec.js --headed
+```
+
+📖 **For more details, see [HEADED_MODE_GUIDE.md](HEADED_MODE_GUIDE.md)**
 
 ## 🎭 Using Manual Login Pause
 
