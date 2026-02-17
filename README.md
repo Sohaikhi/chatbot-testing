@@ -45,6 +45,13 @@ npm install
 npm run install-browsers
 ```
 
+4. Validate setup (optional):
+```bash
+npm run validate
+```
+
+This checks that all components are properly installed and configured.
+
 ## 🧪 Running Tests
 
 ### Headed Mode (Recommended for Development)
